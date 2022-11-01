@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compitable" content="IE-edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!---== CSS ==--->
+	<link rel="stylesheet" href="style.css">
+
+	<!--==js==--->
+	<!--<script type="text/javascript" scr="script.js"></script>-->
+
+
+	<!--<title>Workmanship Form</title>-->
+</head>
+
+<body>
+	<div class="container">
+		<header>Workmanship</header>
+
+		<form name="form1" action="#" method="post" onsubmit="return formvalidate()" >
+			<div class="form first">
+				<div class="workmanship details">
+					<span class="title">Workmanship Details</span>
+
+					<div class="field">
+						<div class="input-field">
+							<label>SKU</label>
+							<input type="text" name="sku" id="sku"  placeholder="Enter SKU" >
+							
+						</div>
+
+						<div class="input-field">
+							<label>Category</label>
+							<select name="category" id="category" >
+                                <option value="" disabled selected>Select Category</option>
+                                <option value='Category 1'>Category 1</option>
+                                <option value='Category 2'>Category 2</option>
+                                <option value='Category 2'>Category 3</option>
+                            </select>
+						</div>
+
+						<div class="input-field">
+							<label>Purity</label>
+							<input type="text" name="purity" id="purity" placeholder="Enter Purity" >
+						</div>
+						
+						<div class="input-field">
+							<label>Design</label>
+							<select name="design" id="design" >
+                                <option value="" disabled selected>Select Design</option>
+                                <option value="Design 1">Design 1</option>
+                                <option value="Design 2">Design 2</option>
+                                <option value="Design 3">Design 3</option>
+                            </select>
+						</div>
+						
+						<div class="input-field">
+							<label>Weight (in Gram)</label>
+							<input type="text" name="weight" id="weight" oninput="calc()" placeholder="Enter Weight" >
+						</div>
+					</div>	
+				</div>		
+			</div>
+
+				<div class="workmanship capital">
+					<span class="title">Workmanship Capital</span>
+
+					<div class="field">
+						<div class="input-field">
+							<label>Item</label>
+								<select name="wk_capital_item" id="wk_capital_item" >
+	                                <option value="" disabled selected>Select Item</option>
+	                                <option value="item 1">Item 1</option>
+	                                <option value="item 2">Item 2</option>
+	                                <option value="item 3">Item 3</option>
+	                           </select>
+						</div>
+
+						<div class="input-field">
+							<label>Price per gram (g)</label>
+							<input type="text" name="wk_capital_weight" id="wk_capital_weight" oninput="calc()" placeholder="Enter Gram" >
+						</div>
+
+					</div>
+				</div>
+				
+
+						<div class="workmanship sale">
+							<span class="title">Workmanship Sale</span>
+
+							<div class="field">
+								<div class="input-field">
+									<label>Item</label>
+										<select name="wk_sale_item" id="wk_sale_item" >
+			                                <option value="" disabled selected>Select Item</option>
+			                                <option value="item 1">Item 1</option>
+	                               			<option value="item 2">Item 2</option>
+	                                		<option value="item 3">Item 3</option>
+			                            </select>
+								</div>
+
+								<div class="input-field">
+									<label>Price per gram (g)</label>
+									<input type="text" name="wk_sale_weight" id="wk_sale_weight" oninput="calc()" placeholder="Enter Gram" >
+								</div>
+
+
+								<div class="input-field">
+									<label>Total Workmanship</label>
+									<span id="wk_total" >0</span>
+								</div>
+							</div>	
+
+						</div>		
+					
+
+					<button type="submit" class="nextBtn" >
+                        <span class="btnText">Submit</span>
+                        <!--<i class="uil uil-navigator"></i>-->
+                    </button>
+                 
+                
+                	</div>
+                </div>
+
+<script type="text/javascript">
+	function formvalidate(){
+
+		if(document.form1.sku.value =="" || document.form1.sku.value ==null ){
+				alert("SKU cannot be blank!");
+				document.form1.sku.focus();
+				return false;
+		}
+
+		if(document.form1.weight.value =="" || document.form1.weight.value ==null ){
+				alert("Weight cannot be blank!");
+				document.form1.weight.focus();
+				return false;
+		}
+
+		if(document.form1.wk_capital_item.value =="" || document.form1.wk_capital_item.value ==null ){
+				alert("Workmanship Capital Type cannot be blank!");
+				document.form1.wk_capital_item.focus();
+				return false;
+		}
+
+		if(document.form1.wk_capital_weight.value =="" || document.form1.wk_capital_weight.value ==null ){
+				alert("Workmanship Capital per gram cannot be blank!");
+				document.form1.wk_capital_weight.focus();
+				return false;
+		}
+
+		if(document.form1.wk_sale_item.value =="" || document.form1.wk_sale_item.value ==null ){
+				alert("Workmanship Sale Type cannot be blank!");
+				document.form1.wk_sale_item.focus();
+				return false;
+		}
+
+		if(document.form1.wk_sale_weight.value =="" || document.form1.wk_sale_weight.value ==null ){
+				alert("Workmanship Sale per gram cannot be blank!");
+				document.form1.wk_sale_weight.focus();
+				return false;
+		}
+
+		return true;
+	}
+
+
+
+	function calc(){
+		var weight = document.getElementById("weight").value;
+		var wk_capital_weight = document.getElementById("wk_capital_weight").value;
+		var wk_sale_weight = document.getElementById("wk_sale_weight").value;
+		var total = weight * (wk_capital_weight/wk_sale_weight);
+		document.getElementById("wk_total").innerHTML= total;
+
+		
+	}
+</script>
+		</form>
+	</div>
+</body>
+</html>
